@@ -1,4 +1,7 @@
 # TPP (ECCV'22)
+
+### [ArXiv](https://arxiv.org/abs/2207.12534) | [PDF](https://arxiv.org/pdf/2207.12534.pdf) 
+
 <div align="center">
     <a><img src="figs/smile.png"  height="90px" ></a>
     &nbsp &nbsp
