@@ -61,6 +61,7 @@ CUDA_VISIBLE_DEVICES=0 python main.py --prune_method opp -a resnet56 --lr_ft 0:0
 # ResNet50, 2.56x
 
 # ResNet50, 3.06x
+
 ```
 
 For the results with TIMM in Tab. 2, we apply our method to the [TIMM code base](https://github.com/huggingface/pytorch-image-models), which needs more time to clean up now. Stay tuned. Thanks!
@@ -68,7 +69,8 @@ For the results with TIMM in Tab. 2, we apply our method to the [TIMM code base]
 
 ## Experimental Results
 
-1. ResNet56 on CIFAR10
+1. **ResNet56 on CIFAR10**
+
 On this small dataset, we attempt to show TPP beats other alternative trainability-preserving methods. Five baseline approaches are compared to.
 
 <div align="center">
@@ -76,7 +78,8 @@ On this small dataset, we attempt to show TPP beats other alternative trainabili
 </div>
 
 
-2. ResNets on ImageNet
+2. **ResNets on ImageNet**
+
 On imagenet, following standard filter pruning papers, we compare different methods at the same (or similar) speedups (measured by FLOPs reduction).
 
 <div align="center">
@@ -87,4 +90,21 @@ On imagenet, following standard filter pruning papers, we compare different meth
 > If you have noted that the proposed method TPP seems to "only beat others marginally" at the presented speedups, it is recommended to check out our [another paper](https://arxiv.org/abs/2301.05219) for a demystified overview of the status quo of filter pruning.
 
 ## Acknowledgments
-In this code we refer to the following implementations: [Regularization-Pruning](https://github.com/MingSun-Tse/Regularization-Pruning), [pytorch imagenet example](https://github.com/pytorch/examples/tree/master/imagenet), [rethinking-network-pruning](https://github.com/Eric-mingjie/rethinking-network-pruning), [EigenDamage-Pytorch](https://github.com/alecwangcq/EigenDamage-Pytorch), [pytorch_resnet_cifar10](https://github.com/akamaster/pytorch_resnet_cifar10). Great thanks to them!
+
+In this code we refer to the following implementations: [Regularization-Pruning](https://github.com/MingSun-Tse/Regularization-Pruning), [pytorch imagenet example](https://github.com/pytorch/examples/tree/master/imagenet), [rethinking-network-pruning](https://github.com/Eric-mingjie/rethinking-network-pruning), [EigenDamage-Pytorch](https://github.com/alecwangcq/EigenDamage-Pytorch), [pytorch_resnet_cifar10](https://github.com/akamaster/pytorch_resnet_cifar10), [TIMM](https://github.com/huggingface/pytorch-image-models). Great thanks to them!
+
+Meanwhile, this paper initially got not very good scores when [reviewed in ICLR'23](https://openreview.net/forum?id=AZFvpnnewr). After our active rebuttal, reviewers agreed upon our contribution and voted for acceptance unanimously. We sincerely thank all the reviewers for helping us improve this paper!
+
+## Citation
+
+If this paper or code helps you, please generously consider citing our paper:
+
+```
+@inproceedings{wang2023trainability,
+    title={Trainability Preserving Neural Pruning},
+    author={Wang, Huan and Fu, Yun},
+    booktitle={ICLR},
+    year={2023},
+}
+```
+
