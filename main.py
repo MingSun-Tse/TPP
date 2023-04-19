@@ -320,7 +320,7 @@ def main_worker(gpu, ngpus_per_node, args):
     #         model = torch.nn.DataParallel(model).cuda()
 
     if hasattr(args, 'utils') and args.utils.check_kernel_spatial_dist:
-        from utils import check_kernel_spatial_dist
+        from smilelogging.utils import check_kernel_spatial_dist
         check_kernel_spatial_dist(model)
         exit()
 
@@ -555,7 +555,7 @@ def set_up_lr_scheduler(optimizer, start_epoch):
         print(
             f'==> Create lr scheduler: CosineAnnealingLR, eta_min={min_lr}, T_max: {args.epochs}, last_epoch: {start_epoch - 1}')
     else:
-        from utils import PresetLRScheduler
+        from smilelogging.utils import PresetLRScheduler
         lr = args.lr_ft if get_arg(args, 'lr_ft') else args.lr
         lr_scheduler = PresetLRScheduler(lr)
         print(
@@ -763,7 +763,7 @@ def one_epoch_train(train_loader, model, criterion, optimizer, epoch):
         # # Collect weights after update
         # if hasattr(args, 'utils') and args.utils.check_grad_history:
         #     effective_grad = {}
-        #     from utils import get_lr
+        #     from smilelogging.utils import get_lr
         #     lr = get_lr(optimizer)
         #     for name, module in model.named_modules():
         #         if isinstance(module, (nn.Conv2d, nn.Linear, nn.BatchNorm2d)):
@@ -779,7 +779,7 @@ def one_epoch_train(train_loader, model, criterion, optimizer, epoch):
 
         # Utils: check gradient norm
         if hasattr(args, 'utils') and args.utils.check_grad_norm:
-            from utils import check_grad_norm
+            from smilelogging.utils import check_grad_norm
             if i % args.print_interval == 0:
                 print('');
                 print(f'(** Start check_grad_norm. Epoch {epoch} Step {i} **)')
@@ -789,7 +789,7 @@ def one_epoch_train(train_loader, model, criterion, optimizer, epoch):
 
         # Utils: check gradient stats
         if hasattr(args, 'utils') and args.utils.check_grad_stats:
-            from utils import check_grad_stats
+            from smilelogging.utils import check_grad_stats
             if i % args.print_interval == 0:
                 print('');
                 print(f'(** Start check_grad_stats. Epoch {epoch} Step {i} **)')
@@ -835,7 +835,7 @@ def one_epoch_train(train_loader, model, criterion, optimizer, epoch):
 
         # Utils: check weight stats
         if hasattr(args, 'utils') and args.utils.check_weight_stats:
-            from utils import check_weight_stats
+            from smilelogging.utils import check_weight_stats
             if i % args.print_interval == 0:
                 print('');
                 print(f'(** Start check_weight_stats. Epoch {epoch} Step {i} **)')
