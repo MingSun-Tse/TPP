@@ -1,6 +1,11 @@
 # TPP (Trainability Preserving Pruning) ICLR 2023
 
-### [ArXiv](https://arxiv.org/abs/2207.12534) | [PDF](https://arxiv.org/pdf/2207.12534.pdf) 
+[![arxiv](https://img.shields.io/badge/TPP-Arxiv-179bd3)](https://arxiv.org/abs/2207.12534)
+[![pdf](https://img.shields.io/badge/TPP-PDF-179bd3)](https://arxiv.org/pdf/2207.12534.pdf)
+[![slides](https://img.shields.io/badge/TPP-Slides-179bd3)](https://mingsun-tse.github.io/files/Wang_and_Fu_ICLR23_TPP.pdf)
+[![logs](https://img.shields.io/badge/TPP-Experiment%20Logs-179bd3)]()
+[![visitors](https://visitor-badge.glitch.me/badge?page_id=github.com/MingSun-Tse/TPP)](https://github.com/MingSun-Tse/TPP)
+
 
 <div align="center">
     <a><img src="figs/smile.png"  height="90px" ></a>
@@ -18,9 +23,9 @@ This repository is for a new structured network pruning method (`Trainability Pr
 <div align="center">
   <img src="figs/tpp.png" width="750px">
 </div>
-<justify>
-Many recent works have shown trainability plays a central role in neural network pruning – unattended broken trainability can lead to severe under-performance and unintentionally amplify the effect of retraining learning rate, resulting in bi- ased (or even misinterpreted) benchmark results. This paper introduces trainabil- ity preserving pruning (TPP), a scalable method to preserve network trainability against pruning, aiming for improved pruning performance and being more robust to retraining hyper-parameters (e.g., learning rate). Specifically, we propose to penalize the gram matrix of convolutional filters to decorrelate the pruned filters from the retained filters. In addition to the convolutional layers, per the spirit of preserving the trainability of the whole network, we also propose to regularize the batch normalization parameters (scale and bias). Empirical studies on linear MLP networks show that TPP can perform on par with the oracle trainability recovery scheme. On nonlinear ConvNets (ResNet56/VGG19) on CIFAR10/100, TPP outperforms the other counterpart approaches by an obvious margin. Moreover, results on ImageNet-1K with ResNets suggest that TPP consistently performs more favorably against other top-performing structured pruning approaches.
-</justify>
+<p align="justify"> 
+Many recent works have shown trainability plays a central role in neural network pruning – unattended broken trainability can lead to severe under-performance and unintentionally amplify the effect of retraining learning rate, resulting in bi- ased (or even misinterpreted) benchmark results. This paper introduces trainability preserving pruning (TPP), a scalable method to preserve network trainability against pruning, aiming for improved pruning performance and being more robust to retraining hyper-parameters (e.g., learning rate). Specifically, we propose to penalize the gram matrix of convolutional filters to decorrelate the pruned filters from the retained filters, as shown in the figure (c) above. In addition to the convolutional layers, per the spirit of preserving the trainability of the whole network, we also propose to regularize the batch normalization parameters (scale and bias). Empirical studies on linear MLP networks show that TPP can perform on par with the oracle trainability recovery scheme. On nonlinear ConvNets (ResNet56/VGG19) on CIFAR10/100, TPP outperforms the other counterpart approaches by an obvious margin. Moreover, results on ImageNet-1K with ResNets suggest that TPP consistently performs more favorably against other top-performing structured pruning approaches.
+</p>
 
 ## Install
 ```
@@ -101,10 +106,10 @@ If this paper or code helps you, please generously consider citing our paper:
 
 ```
 @inproceedings{wang2023trainability,
-    title={Trainability Preserving Neural Pruning},
-    author={Wang, Huan and Fu, Yun},
-    booktitle={ICLR},
-    year={2023},
+    title = {Trainability Preserving Neural Pruning},
+    author = {Wang, Huan and Fu, Yun},
+    booktitle = {ICLR},
+    year = {2023},
 }
 ```
 
