@@ -18,7 +18,9 @@ This repository is for a new structured network pruning method (`Trainability Pr
 <div align="center">
   <img src="figs/tpp.png" width="750px">
 </div>
+<justify>
 Many recent works have shown trainability plays a central role in neural network pruning – unattended broken trainability can lead to severe under-performance and unintentionally amplify the effect of retraining learning rate, resulting in bi- ased (or even misinterpreted) benchmark results. This paper introduces trainabil- ity preserving pruning (TPP), a scalable method to preserve network trainability against pruning, aiming for improved pruning performance and being more robust to retraining hyper-parameters (e.g., learning rate). Specifically, we propose to penalize the gram matrix of convolutional filters to decorrelate the pruned filters from the retained filters. In addition to the convolutional layers, per the spirit of preserving the trainability of the whole network, we also propose to regularize the batch normalization parameters (scale and bias). Empirical studies on linear MLP networks show that TPP can perform on par with the oracle trainability recovery scheme. On nonlinear ConvNets (ResNet56/VGG19) on CIFAR10/100, TPP outperforms the other counterpart approaches by an obvious margin. Moreover, results on ImageNet-1K with ResNets suggest that TPP consistently performs more favorably against other top-performing structured pruning approaches.
+</justify>
 
 ## Install
 ```
@@ -58,12 +60,10 @@ CUDA_VISIBLE_DEVICES=0 python main.py --prune_method opp -a resnet56 --lr_ft 0:0
 
 # ResNet50, 2.56x
 
-
 # ResNet50, 3.06x
-
-
-# ResNet50 with TIMM
 ```
+
+For the results with TIMM in Tab. 2, we apply our method to the [TIMM code base](https://github.com/huggingface/pytorch-image-models), which needs more time to clean up now. Stay tuned. Thanks!
 
 
 ## Experimental Results
