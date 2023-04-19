@@ -48,28 +48,41 @@ It will save to folder `pretrained_ckpts`.
 2. Run the following snippets. Here we use pruning ratio 0.9 as an example. You may change it to 0.1 ~ 0.95 to reproduce our results in Tabs. 1 and 10.
 
 ```bash
-# TPP (ours)
-CUDA_VISIBLE_DEVICES=0 python main.py --prune_method opp -a resnet56 --lr_ft 0:0.01,60:0.001,90:0.0001 --epochs 120 --pretrained_ckpt pretrained_ckpts/resnet56_cifar10.pth --dataset cifar10 --wd 0.0005 --batch_size 128 --batch_size_prune 128 --index_layer name_matching --stage_pr *layer*.conv1:0.9 --update_reg_interval 10 --stabilize 10000 --opp_scheme 5 --lw_opp 1000  --experiment_name TPP__resnet56__cifar10__pr0.9__lrft0.01
+# TPP, resnet56
+python main.py \
+-a resnet56 --dataset cifar10 \
+--wd 0.0005 --batch_size 128 --batch_size_prune 128 \
+--lr_ft 0:0.01,60:0.001,90:0.0001 --epochs 120 --pretrained_ckpt pretrained_ckpts/resnet56_cifar10.pth \
+--prune_method opp --opp_scheme 5 --lw_opp 1000 --update_reg_interval 10 --stabilize_reg_interval 10000 \
+--index_layer name_matching --stage_pr *layer*.conv1:0.9 \
+--experiment_name TPP__resnet56__cifar10__pr0.9__lrft0.01
+
+# TPP, vgg19
+python main.py \
+-a vgg19_C --dataset cifar100 \
+--wd 0.0005 --batch_size 256 --batch_size_prune 256 \
+--lr_ft 0:0.01,60:0.001,90:0.0001 --epochs 120 --pretrained_ckpt pretrained_ckpts/vgg19_cifar100.pth \
+--prune_method opp --opp_scheme 5 --lw_opp 1000 --update_reg_interval 10 --stabilize_reg_interval 10000 \
+--stage_pr 1-15:0.9 \
+--experiment_name TPP__vgg19__cifar100__pr0.9__lrft0.01
 ```
 
 
 ### Tab. 2 (ResNets on ImageNet)
 
+For the ImageNet experiments, we use torchvision models as the base model. They will be automatically downloaded during training.
+
 ```bash
-
-# ResNet34, 1.32x
-
-# ResNet50, 1.49x
-
 # ResNet50, 2.31x
+python main.py --prune_method opp --opp_scheme v5 --lw_opp 1000 --update_reg_interval 5 --stabilize_reg_interval 40000 --dataset imagenet -a resnet50 --pretrained --lr_ft 0:0.01,30:0.001,60:0.0001,75:0.00001 --epochs 90 --batch_size_prune 256 --batch_size 256 --index_layer name_matching --stage_pr *layer[1-3]*conv[1-2]:0.6,*layer4*conv[1-2]:0.21 --experiment_name TPP__resnet50__imagenet__2.31x_PR0.60.21 -j 32
 
 # ResNet50, 2.56x
+python main.py --prune_method opp --opp_scheme v5 --lw_opp 1000 --update_reg_interval 5 --stabilize_reg_interval 40000 --dataset imagenet -a resnet50 --pretrained --lr_ft 0:0.01,30:0.001,60:0.0001,75:0.00001 --epochs 90 --batch_size_prune 256 --batch_size 256 --index_layer name_matching --stage_pr *layer[1-2]*conv[1-2]:0.74,*layer3*conv[1-2]:0.6,*layer4*conv[1-2]:0.21 --experiment_name TPP__resnet50__imagenet__2.56x_PR0.740.60.21 -j 32
 
 # ResNet50, 3.06x
-
+python main.py --prune_method opp --opp_scheme v5 --lw_opp 1000 --update_reg_interval 5 --stabilize_reg_interval 40000 --dataset imagenet -a resnet50 --pretrained --lr_ft 0:0.01,30:0.001,60:0.0001,75:0.00001 --epochs 90 --batch_size_prune 256 --batch_size 256 --index_layer name_matching --stage_pr *layer[1-3]*conv[1-2]:0.68,*layer4*conv[1-2]:0.5 --experiment_name TPP__resnet50__imagenet__3.06x_PR0.680.5 -j 32
 ```
-
-For the results with TIMM in Tab. 2, we apply our method to the [TIMM code base](https://github.com/huggingface/pytorch-image-models), which needs more time to clean up now. Stay tuned. Thanks!
+> For the results with TIMM in Tab. 2, we apply our method to the [TIMM code base](https://github.com/huggingface/pytorch-image-models), which needs more time to clean up. Stay tuned. Thanks!
 
 
 ## Experimental Results
@@ -98,7 +111,7 @@ On imagenet, following standard filter pruning papers, we compare different meth
 
 In this code we refer to the following implementations: [Regularization-Pruning](https://github.com/MingSun-Tse/Regularization-Pruning), [pytorch imagenet example](https://github.com/pytorch/examples/tree/master/imagenet), [rethinking-network-pruning](https://github.com/Eric-mingjie/rethinking-network-pruning), [EigenDamage-Pytorch](https://github.com/alecwangcq/EigenDamage-Pytorch), [pytorch_resnet_cifar10](https://github.com/akamaster/pytorch_resnet_cifar10), [TIMM](https://github.com/huggingface/pytorch-image-models). Great thanks to them!
 
-Meanwhile, this paper initially got not very good scores when [reviewed in ICLR'23](https://openreview.net/forum?id=AZFvpnnewr). After our active rebuttal, reviewers agreed upon our contribution and voted for acceptance unanimously. We sincerely thank all the reviewers for helping us improve this paper!
+We sincerely thank all the [reviewers in ICLR'23](https://openreview.net/forum?id=AZFvpnnewr) for helping us improve this paper!
 
 ## Citation
 
