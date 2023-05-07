@@ -1,11 +1,10 @@
 # TPP (Trainability Preserving Pruning) ICLR 2023
 
-[![arxiv](https://img.shields.io/badge/TPP-Arxiv-179bd3)](https://arxiv.org/abs/2207.12534)
-[![pdf](https://img.shields.io/badge/TPP-PDF-179bd3)](https://arxiv.org/pdf/2207.12534.pdf)
-[![slides](https://img.shields.io/badge/TPP-Slides-179bd3)](https://mingsun-tse.github.io/files/Wang_and_Fu_ICLR23_TPP.pdf)
-[![logs](https://img.shields.io/badge/TPP-Experiment%20Logs-179bd3)]()
-[![visitors](https://visitor-badge.glitch.me/badge?page_id=github.com/MingSun-Tse/TPP)](https://github.com/MingSun-Tse/TPP)
-
+[![arxiv](https://img.shields.io/badge/TPP-Arxiv-orange)](https://arxiv.org/abs/2207.12534)
+[![pdf](https://img.shields.io/badge/TPP-PDF-green)](https://arxiv.org/pdf/2207.12534.pdf)
+[![slides](https://img.shields.io/badge/TPP-Slides-red)](https://mingsun-tse.github.io/files/Wang_and_Fu_ICLR23_TPP.pdf)
+[![logs](https://img.shields.io/badge/TPP-Released%20Logs&Ckpts-179bd3)](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1)
+[![visitors](https://visitor-badge.glitch.me/badge?page_id=mingsun-tse.tpp)](https://github.com/MingSun-Tse/TPP)
 
 <div align="center">
     <a><img src="figs/smile.png"  height="90px" ></a>
@@ -111,6 +110,37 @@ On imagenet, following standard filter pruning papers, we compare different meth
 
 
 > If you have noted that the proposed method TPP seems to "only beat others marginally" at the presented speedups, it is recommended to check out our [another paper](https://arxiv.org/abs/2301.05219) for a demystified overview of the status quo of filter pruning.
+
+
+## Logs/Ckpts Release and Tips to Reproduce
+Normally, you should be able to reproduce the results using the provided scripts above. If you want to check the logs of one specific number in our paper. Here is a step-by-step guidance:
+
+0. Download the [released](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1) experiment logs and results summary:
+```
+wget https://github.com/MingSun-Tse/TPP/releases/download/v0.1/results_summary_ICLR23_TPP.txt
+wget https://github.com/MingSun-Tse/TPP/releases/download/v0.1/logs_ICLR23_TPP.zip
+unzip logs_ICLR23_TPP.zip  # This will unzip to a folder "Experiments_Released"
+```
+
+1. Say you are interested in the result `93.32 (0.11)` by our method in Tab. 1 (PR 0.5 and initial learning rate 1e-3). Then you can search in the released results summary txt. Note the 6-digit number, which are called *experiment ids*.
+
+<div align="center">
+  <img src="figs/check_exps_steps.png" width="750px">
+</div>
+
+2. When you have the experiment ids, e.g., 001530, it is very easy to track down the associated logs via 
+```
+ls Experiments_Released | grep 001530
+```
+On my computer, this gives me
+```
+ls Experiments_Released | grep "001530"
+OPPv5__resnet56__cifar10__pr0.5__lrft0.001__lwopp1000_SERVER115-20210520-001530/
+```
+The log txt is at the path `log/log.txt` under this folder. The log txt documents *everything* you need to reproduce the result (e.g., git commit ID and the script), thanks to [smilelogging](https://github.com/MingSun-Tse/smilelogging).
+
+We only release a few ckpts (those on ImageNet). Others are omitted because they will consume too much of my GitHub space. This said, if you want them anyway, welcome to drop me a line (wang.huan@northeastern.edu). Enjoy!
+
 
 ## Acknowledgments
 
