@@ -113,7 +113,7 @@ On imagenet, following standard filter pruning papers, we compare different meth
 
 
 ## Logs/Ckpts Release and Tips to Reproduce
-Normally, you should be able to reproduce the results using the provided scripts above. If you want to check the log associated with a pecific number in our paper, here is a step-by-step guidance:
+Normally, you should be able to reproduce the results using the provided scripts above. If you want to check the log associated with a specific number in our paper, here is a step-by-step guidance:
 
 0. Download the [released](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1) experiment logs and results summary:
 ```
@@ -122,7 +122,7 @@ wget https://github.com/MingSun-Tse/TPP/releases/download/v0.1/logs_ICLR23_TPP.z
 unzip logs_ICLR23_TPP.zip  # This will unzip to a folder "Experiments_Released"
 ```
 
-1. Say you are interested in the result `93.32 (0.11)` by our method in Tab. 1 (PR 0.5 and initial learning rate 1e-3). Then you can search in the released results summary txt. Note the 6-digit number, which are called *experiment ids*.
+1. Say you are interested in the result `93.32 (0.11)` by our method in Tab. 1 (PR 0.5 and initial learning rate 1e-3). Then you can search in the released results summary txt. Note the *6-digit numbers*, which are called *[experiment ids](https://github.com/MingSun-Tse/smilelogging)*.
 
 <div align="center">
   <img src="figs/check_exps_steps.png" width="750px">
@@ -139,7 +139,7 @@ OPPv5__resnet56__cifar10__pr0.5__lrft0.001__lwopp1000_SERVER115-20210520-001530/
 ```
 The log txt is at the path `log/log.txt` under this folder. The log txt documents *everything* you need to reproduce the result (e.g., git commit ID and the script), thanks to [smilelogging](https://github.com/MingSun-Tse/smilelogging).
 
-We only release a few [ckpts](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1) (those on ImageNet as these are the most weight-carrying experiments). Others are omitted because they consume too much of the GitHub space. This said, if you want them anyway, welcome to drop me a line (wang.huan@northeastern.edu). Enjoy!
+Currently, we only release a few [ckpts](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1) (those on ImageNet as they are the most weight-carrying experiments). Others are omitted because they consume too much of the GitHub space. This said, if you want them anyway, welcome to drop me a line (wang.huan@northeastern.edu). Enjoy!
 
 
 ## Acknowledgments
