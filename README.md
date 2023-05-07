@@ -113,7 +113,7 @@ On imagenet, following standard filter pruning papers, we compare different meth
 
 
 ## Logs/Ckpts Release and Tips to Reproduce
-Normally, you should be able to reproduce the results using the provided scripts above. If you want to check the logs of one specific number in our paper. Here is a step-by-step guidance:
+Normally, you should be able to reproduce the results using the provided scripts above. If you want to check the log associated with a pecific number in our paper, here is a step-by-step guidance:
 
 0. Download the [released](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1) experiment logs and results summary:
 ```
