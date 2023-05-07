@@ -134,12 +134,12 @@ ls Experiments_Released | grep 001530
 ```
 On my computer, this gives me
 ```
-ls Experiments_Released | grep "001530"
+ls Experiments_Released | grep 001530
 OPPv5__resnet56__cifar10__pr0.5__lrft0.001__lwopp1000_SERVER115-20210520-001530/
 ```
 The log txt is at the path `log/log.txt` under this folder. The log txt documents *everything* you need to reproduce the result (e.g., git commit ID and the script), thanks to [smilelogging](https://github.com/MingSun-Tse/smilelogging).
 
-We have only released a few [ckpts](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1) (those on ImageNet). Others are omitted because they will consume too much of my GitHub space. This said, if you want them anyway, welcome to drop me a line (wang.huan@northeastern.edu). Enjoy!
+We only release a few [ckpts](https://github.com/MingSun-Tse/TPP/releases/tag/v0.1) (those on ImageNet as these are the most weight-carrying experiments). Others are omitted because they consume too much of the GitHub space. This said, if you want them anyway, welcome to drop me a line (wang.huan@northeastern.edu). Enjoy!
 
 
 ## Acknowledgments
