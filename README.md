@@ -77,6 +77,9 @@ python main.py \
 For the ImageNet experiments, we use torchvision models as the base model. They will be automatically downloaded during training.
 
 ```bash
+# ResNet50, 1.49x
+python main.py --prune_method opp --opp_scheme v5 --lw_opp 1000 --update_reg_interval 5 --stabilize_reg_interval 40000 --dataset imagenet -a resnet50 --pretrained --lr_ft 0:0.01,30:0.001,60:0.0001,75:0.00001 --epochs 90 --batch_size_prune 256 --batch_size 256 --index_layer name_matching --stage_pr *layer[1-3]*conv[1-2]:0.3,*layer4*conv[1-2]:0.14 --experiment_name TPP__resnet50__imagenet__1.49x_PR0.30.14 -j 32
+
 # ResNet50, 2.31x
 python main.py --prune_method opp --opp_scheme v5 --lw_opp 1000 --update_reg_interval 5 --stabilize_reg_interval 40000 --dataset imagenet -a resnet50 --pretrained --lr_ft 0:0.01,30:0.001,60:0.0001,75:0.00001 --epochs 90 --batch_size_prune 256 --batch_size 256 --index_layer name_matching --stage_pr *layer[1-3]*conv[1-2]:0.6,*layer4*conv[1-2]:0.21 --experiment_name TPP__resnet50__imagenet__2.31x_PR0.60.21 -j 32
 
